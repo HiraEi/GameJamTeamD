@@ -21,7 +21,7 @@ public class StarController : MonoBehaviour
 
         if (collision.tag == "TheEarth")
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

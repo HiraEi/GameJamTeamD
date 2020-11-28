@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteoController : MonoBehaviour
 {
-    [SerializeField] float m_meteoSpeed = 5f;
+    //[SerializeField] float m_meteoSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class MeteoController : MonoBehaviour
     {
         if (collision.tag == "TheEarth")
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

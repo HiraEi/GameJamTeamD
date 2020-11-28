@@ -9,7 +9,11 @@ public class PrayerController : MonoBehaviour
     [SerializeField] float m_length = 5f;//オーバーラップを出す位置
     [SerializeField] LayerMask m_mask;
     [SerializeField] float m_pushPower = 5f;
-
+    [SerializeField] AudioClip m_pushSoundNormal = null;
+    //飛ばす方向をランダムにする
+    [SerializeField] float m_maxForRandom = 3f;//右ブレ
+    [SerializeField] float m_minForRandom = -3f;//左ブレ
+    AudioSource m_as;
     GameObject m_tempObj;
     Collider2D[] m_colliders;
     bool m_isSomeThing;
@@ -18,6 +22,7 @@ public class PrayerController : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
+        m_as = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,7 +35,6 @@ public class PrayerController : MonoBehaviour
         {
             CheckForward();
             Push();
-
         }
     }
 
@@ -46,18 +50,63 @@ public class PrayerController : MonoBehaviour
 
         Debug.DrawLine(start + Vector2.down * m_radius, start + Vector2.up * m_radius);
         Debug.DrawLine(start + Vector2.right * m_radius, start + Vector2.left * m_radius);
-
     }
 
     void Push()
     {
+        Vector2 forceDir = new Vector2(Random.Range(m_minForRandom, m_maxForRandom), 1f * m_pushPower);
+
         if (m_colliders != null)
         {
             foreach (var item in m_colliders)
             {
                 Rigidbody2D rb2d = item.GetComponent<Rigidbody2D>();
-                rb2d.AddForce(Vector2.up * m_pushPower, ForceMode2D.Impulse);
+                rb2d.AddForce(forceDir, ForceMode2D.Impulse);
+                //FilterTarget(item.gameObject, "Comet");
+                if (m_pushSoundNormal != null)
+                {
+                    m_as.PlayOneShot(m_pushSoundNormal);
+                }
             }
         }
+    }
+
+    GameObject FilterTarget(GameObject originalObj, string tagName)
+    {
+        float tmpDis = 0;//一時保存　距離
+        float nearestDis = 0;//最も近いオブジェクトの距離
+
+        GameObject targetObj = null;//オブジェクト
+
+        foreach (var item in GameObject.FindGameObjectsWithTag(tagName))
+        {
+            tmpDis = Vector2.Distance(item.transform.position, originalObj.transform.position);
+
+            if (nearestDis == 0 || nearestDis > tmpDis)
+            {
+                nearestDis = tmpDis;
+                targetObj = item;
+            }
+        }
+        return targetObj;
+    }
+
+    void FilterTarget(GameObject originalObj, string tagName, AudioClip pushSound)
+    {
+        float tmpDis = 0;//一時保存　距離
+        float nearestDis = 0;//最も近いオブジェクトの距離
+
+        GameObject targetObj = null;//オブジェクト
+
+        foreach (var item in GameObject.FindGameObjectsWithTag(tagName))
+        {
+            tmpDis = Vector2.Distance(item.transform.position, originalObj.transform.position);
+            if (nearestDis == 0 || nearestDis > tmpDis)
+            {
+                nearestDis = tmpDis;
+                targetObj = item;
+            }
+        }
+
     }
 }

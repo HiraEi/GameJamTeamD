@@ -13,6 +13,10 @@ public class PrayerController : MonoBehaviour
     //飛ばす方向をランダムにする
     [SerializeField] float m_maxForRandom = 3f;//右ブレ
     [SerializeField] float m_minForRandom = -3f;//左ブレ
+    //プレイヤーのスキルの数
+    [SerializeField]int m_playerSkillCount = 2;
+
+    PlayerSkillCounter m_psc;
     AudioSource m_as;
     GameObject m_tempObj;
     Collider2D[] m_colliders;
@@ -23,6 +27,7 @@ public class PrayerController : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_as = GetComponent<AudioSource>();
+        m_psc = PlayerSkillCounter.FindObjectOfType<PlayerSkillCounter>();
     }
 
     // Update is called once per frame
@@ -30,12 +35,23 @@ public class PrayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         m_rb.velocity = h * Vector2.right * m_speed;
+        Debug.Log(m_playerSkillCount);
 
         if (Input.GetButtonDown("Fire1"))
         {
             CheckForward();
             Push();
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+           
+            m_playerSkillCount++;
+            m_psc.Refresh(m_playerSkillCount);
+        }
+       
+       
+
     }
 
     /// <summary>

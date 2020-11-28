@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2160898547692378185}
   m_Layer: 8
   m_Name: Star
-  m_TagString: Comet
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

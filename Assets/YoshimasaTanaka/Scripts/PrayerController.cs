@@ -14,7 +14,9 @@ public class PrayerController : MonoBehaviour
     [SerializeField] float m_maxForRandom = 3f;//右ブレ
     [SerializeField] float m_minForRandom = -3f;//左ブレ
     //プレイヤーのスキルの数
-    [SerializeField]int m_playerSkillCount = 2;
+    [SerializeField] int m_playerSkillCount = 2;
+    /// <summary>爆発エフェクトのプレハブ</summary>
+    [SerializeField] GameObject m_explosionPrefab = null;
 
     PlayerSkillCounter m_psc;
     AudioSource m_as;
@@ -37,20 +39,27 @@ public class PrayerController : MonoBehaviour
         m_rb.velocity = h * Vector2.right * m_speed;
         Debug.Log(m_playerSkillCount);
 
+        //左クリックで弾き返す
         if (Input.GetButtonDown("Fire1"))
         {
             CheckForward();
             Push();
         }
 
+        //右クリックで破壊
+        if (Input.GetButtonDown("Fire2"))
+        {
+            CheckForward();
+            BreakTarget();
+        }
+
         if (Input.GetButtonDown("Jump"))
         {
-           
             m_playerSkillCount++;
             m_psc.Refresh(m_playerSkillCount);
         }
-       
-       
+
+
 
     }
 
@@ -76,8 +85,14 @@ public class PrayerController : MonoBehaviour
         {
             foreach (var item in m_colliders)
             {
-                Rigidbody2D rb2d = item.GetComponent<Rigidbody2D>();
-                rb2d.AddForce(forceDir, ForceMode2D.Impulse);
+                //もし★だったら弾き返す
+                if (item.tag == "Star")
+                {
+                    Rigidbody2D rb2d = item.GetComponent<Rigidbody2D>();
+                    rb2d.AddForce(forceDir, ForceMode2D.Impulse);
+                }
+
+
                 //FilterTarget(item.gameObject, "Comet");
                 if (m_pushSoundNormal != null)
                 {
@@ -85,6 +100,23 @@ public class PrayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void BreakTarget()
+    {
+        Vector2 forceDir = new Vector2(Random.Range(m_minForRandom, m_maxForRandom), 1f * m_pushPower);
+        foreach (var item in m_colliders)
+        {
+            //もし隕石だったら撃ち返して数秒後に壊す
+            if (item.tag == "Comet")
+            {
+                Rigidbody2D rb2d = item.GetComponent<Rigidbody2D>();
+                rb2d.AddForce(forceDir, ForceMode2D.Impulse);
+                Destroy(item.gameObject, 0.2f);
+
+            }
+        }
+
     }
 
     GameObject FilterTarget(GameObject originalObj, string tagName)

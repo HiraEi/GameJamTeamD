@@ -603,6 +603,8 @@ MonoBehaviour:
   m_playerSkillCount: 0
   m_explosionPrefab: {fileID: 4562643423815953217, guid: 05e4d500fb3b98249bd915292ada4031,
     type: 3}
+  skill: 0
+  m_healPoint: 5
 --- !u!50 &540610849
 Rigidbody2D:
   serializedVersion: 4

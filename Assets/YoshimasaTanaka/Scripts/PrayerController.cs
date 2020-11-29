@@ -18,6 +18,9 @@ public class PrayerController : MonoBehaviour
     /// <summary>爆発エフェクトのプレハブ</summary>
     [SerializeField] GameObject m_explosionPrefab = null;
 
+    [SerializeField] Skill skill;
+    [SerializeField] int m_healPoint = 5;
+
     PlayerSkillCounter m_psc;
     AudioSource m_as;
     GameObject m_tempObj;
@@ -39,7 +42,6 @@ public class PrayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         m_rb.velocity = h * Vector2.right * m_speed;
-        Debug.Log(m_playerSkillCount);
 
         //移動するときにアニメーションをする
 
@@ -73,9 +75,23 @@ public class PrayerController : MonoBehaviour
         //仮のスキルを表示させるやつ
         if (Input.GetButtonDown("Jump"))
         {
-            m_playerSkillCount++;
-            m_psc.Refresh(m_playerSkillCount);
+            switch (skill)
+            {
+                case Skill.Stage1:
+                    Heal heal = GetComponent<Heal>();
+                    heal.HealEathLife(m_healPoint);
+                    break;
+                case Skill.Stage2:
+                    break;
+                case Skill.Stage3:
+                    break;
+                case Skill.Stage4:
+                    break;
+                default:
+                    break;
+            }
         }
+
 
 
 
@@ -188,5 +204,11 @@ public class PrayerController : MonoBehaviour
             }
         }
 
+    }
+
+
+    enum Skill
+    {
+        Stage1, Stage2, Stage3, Stage4,
     }
 }

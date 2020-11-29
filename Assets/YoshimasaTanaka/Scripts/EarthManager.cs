@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EarthManager : MonoBehaviour
 {
-    [SerializeField] int m_hp = 10;
+    [SerializeField] public int m_hp = 10;
     [SerializeField] int m_maxHp = 10;
     [SerializeField] int m_damage = 2;
 
@@ -14,7 +14,7 @@ public class EarthManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Comet")
+        if (collision.tag == "Meteo")
         {
             m_hp -= m_damage;
             Debug.Log($"HIT!{m_damage}のダメージ。のこり{m_hp}");

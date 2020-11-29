@@ -42,16 +42,16 @@ public class PrayerController : MonoBehaviour
         Debug.Log(m_playerSkillCount);
 
         //移動するときにアニメーションをする
-        Vector2 scale = this.transform.localScale;
+
         if (m_rb.velocity.x > 1)/*右に移動している*/
         {
-            scale.x = 1;
-            m_anim.Play("MoveAnimationRight");
+            this.transform.localScale = new Vector2(1, 1);
+            m_anim.Play("Run");
         }
         else if (m_rb.velocity.x < -1)
         {
-            scale.x = -1;
-            m_anim.Play("MoveAnimationLeft");
+            this.transform.localScale = new Vector2(-1, 1);
+            m_anim.Play("Run");
         }
 
         //左クリックで弾き返す 隕石も★も破壊

@@ -26,6 +26,30 @@ public class LoadSceneManagerM : MonoBehaviour
     }
 
     /// <summary>
+    /// ステージ2に遷移
+    /// </summary>
+    public void LoadGameSceneStage2()
+    {
+        SceneManager.LoadScene("GameSceneStage2");
+    }
+
+    /// <summary>
+    /// ステージ3に遷移
+    /// </summary>
+    public void LoadGameSceneStage3()
+    {
+        SceneManager.LoadScene("GameSceneStage3");
+    }
+
+    /// <summary>
+    /// ステージ4に遷移
+    /// </summary>
+    public void LoadGameSceneStage4()
+    {
+        SceneManager.LoadScene("GameSceneStage4");
+    }
+
+    /// <summary>
     /// リザルトシーンへ遷移
     /// </summary>
     public void LoadResultScene()

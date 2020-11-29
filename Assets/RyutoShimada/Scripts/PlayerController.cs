@@ -47,7 +47,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Meteo")
         {
-            Destroy(collision.gameObject);
+            if (Input.GetButton("Fire1"))
+            {
+                collision.gameObject.SetActive(false);
+            }
         }
         else if (collision.tag == "Star")
         {
@@ -68,7 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
-                Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
             }
         }
         else if (collision.tag == "Star")

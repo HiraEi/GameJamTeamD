@@ -10,6 +10,8 @@ public class MeteoriteController : MonoBehaviour
     [SerializeField] float m_powerScale = 5f;
     /// <summary>隕石の最高速度</summary>
     [SerializeField] float m_maxSpeed = 3f;
+    /// <summary></summary>
+    [SerializeField] int m_damage = 1;
     Rigidbody2D m_rb2D;
     void Start()
     {

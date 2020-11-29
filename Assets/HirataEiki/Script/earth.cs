@@ -5,13 +5,15 @@ using UnityEngine;
 public class earth : MonoBehaviour
 {
     [SerializeField] int m_earthHp = 50;
-    // Start is called before the first frame update
+    [SerializeField] int m_cometDamage = 10;
+
+    //githubtest
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -19,10 +21,10 @@ public class earth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.gameObject.tag("damage"))
-        //{
-
-        //}
+        if (collision.gameObject.tag == "Comet")
+        {
+            m_earthHp -= m_cometDamage;
+        }
     }
 
 }

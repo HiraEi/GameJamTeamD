@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Master/Scene.M/ResultScene.unity
     guid: 115e052a76bfac44abe6e2f7fed454b8
+  - enabled: 1
+    path: Assets/Master/Scene.M/ClearScene.unity
+    guid: 3c8b0cb51e25c1f48a2063a4d4858fd2
   m_configObjects: {}

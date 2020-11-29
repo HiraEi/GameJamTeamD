@@ -5,10 +5,19 @@ using UnityEngine;
 public class Heal : MonoBehaviour
 {
     EarthManager m_em;
-    public void HealEathLife(int healPoint)
+    [SerializeField] int m_healPoint;
+    [SerializeField] AudioClip m_healSound = null;
+    AudioSource m_as;
+    public void HealEathLife()
     {
+        m_as = GetComponent<AudioSource>();
         Debug.Log("回復する");
-        m_em = GetComponent<EarthManager>();
-        m_em.m_hp += healPoint;
+        //音を鳴らす
+        if (m_healSound != null)
+        {
+            m_as.PlayOneShot(m_healSound);
+        }
+        m_em = FindObjectOfType<EarthManager>();
+        m_em.m_hp += m_healPoint;
     }
 }

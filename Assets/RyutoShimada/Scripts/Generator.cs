@@ -10,6 +10,8 @@ public class Generator : MonoBehaviour
     [SerializeField] int m_meteoInterval = 3;
     /// <summary>星生成のインターバル</summary>
     [SerializeField] float m_starInterval = 5;
+    /// <summary>星生成の数</summary>
+    [SerializeField] int m_starCount = 5;
     /// <summary>隕石の生成数</summary>
     [SerializeField] int m_meteoInstans = 1;
     /// <summary>隕石の生成数</summary>
@@ -28,11 +30,11 @@ public class Generator : MonoBehaviour
     [SerializeField] GameObject m_rightEnd = default;
 
     /// <summary>generatorの生成範囲（ランダム指定）</summary>
-    Vector2 randomRange;
+    Vector2 m_randomRange;
     /// <summary>ランダムの最低値</summary>
-    float rangeMin;
+    float m_rangeMin;
     /// <summary>ランダムの最高値</summary>
-    float rangeMax;
+    float m_rangeMax;
 
     /// <summary>隕石生成までの時間経過</summary>
     float m_meteoTime;
@@ -43,8 +45,8 @@ public class Generator : MonoBehaviour
     void Start()
     {
         //生成ポジションを入れる
-        rangeMin = m_leftEnd.transform.position.x;
-        rangeMax = m_rightEnd.transform.position.x;
+        m_rangeMin = m_leftEnd.transform.position.x;
+        m_rangeMax = m_rightEnd.transform.position.x;
 
         //すぐに生成される
         m_meteoTime = m_meteoInterval;
@@ -53,11 +55,11 @@ public class Generator : MonoBehaviour
         //最初に決められた個数を生成
         for (int i = 0; i < m_meteoInstans; i++) //meteo生成
         {
-            Instantiate(m_meteo, randomRange, this.transform.rotation, m_meteoPool);
+            Instantiate(m_meteo, m_randomRange, this.transform.rotation, m_meteoPool);
         }
         for (int i = 0; i < m_starInstans; i++) //starの生成
         {
-            Instantiate(m_star, randomRange, this.transform.rotation, m_starPool);
+            Instantiate(m_star, m_randomRange, this.transform.rotation, m_starPool);
         }
 
 
@@ -71,7 +73,7 @@ public class Generator : MonoBehaviour
         m_starTime += Time.deltaTime;
 
         //生成位置をランダムにするための処理
-        randomRange = new Vector2(Random.Range(rangeMin, rangeMax), this.transform.position.y);
+        m_randomRange = new Vector2(Random.Range(m_rangeMin, m_rangeMax), this.transform.position.y);
 
         //generatorの位置で生成
         StartCoroutine(MeteoGenerate(this.gameObject));
@@ -91,7 +93,7 @@ public class Generator : MonoBehaviour
                 if (!t.gameObject.activeSelf)
                 {
                     //オブジェクトプール
-                    t.SetPositionAndRotation(randomRange, generater.transform.rotation);
+                    t.SetPositionAndRotation(m_randomRange, generater.transform.rotation);
                     t.gameObject.SetActive(true);//位置と回転を設定後、アクティブにする
                     m_meteoTime = 0f;
                 }
@@ -101,11 +103,12 @@ public class Generator : MonoBehaviour
     }
 
     /// <summary>
-    /// 星の生成
+    /// 星の生成(オブジェ口プール使用)
     /// </summary>
     /// <param name="generater">生成場所</param>
     void StarGenerate(GameObject generater)
     {
+        if (m_starCount < 0) return;
         //オブジェクトプール
         foreach (Transform t in m_starPool)
         {
@@ -116,8 +119,10 @@ public class Generator : MonoBehaviour
                 if (!t.gameObject.activeSelf)
                 {
                     //生成位置をランダムに
-                    t.SetPositionAndRotation(randomRange, generater.transform.rotation);
+                    t.SetPositionAndRotation(m_randomRange, generater.transform.rotation);
                     t.gameObject.SetActive(true);//位置と回転を設定後、アクティブにする
+                    m_starCount--;
+                    m_starTime = 0;
                 }
             }
         }

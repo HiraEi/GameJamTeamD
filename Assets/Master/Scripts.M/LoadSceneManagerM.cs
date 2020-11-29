@@ -64,4 +64,12 @@ public class LoadSceneManagerM : MonoBehaviour
     {
         SceneManager.LoadScene("StageSelectScene");
     }
+
+    /// <summary>
+    /// ゲームオーバーシーンへ遷移
+    /// </summary>
+    public void LoadGameOverScene()
+    {
+        SceneManager.LoadScene("GameOverScene");
+    }
 }

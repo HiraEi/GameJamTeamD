@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// いらなくなりました
+/// </summary>
 public class GameManagerM : MonoBehaviour
 {
     //スキル使用のフラグ

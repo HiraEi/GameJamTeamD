@@ -39,18 +39,20 @@ public class PrayerController : MonoBehaviour
         m_rb.velocity = h * Vector2.right * m_speed;
         Debug.Log(m_playerSkillCount);
 
-        //左クリックで弾き返す
+        //左クリックで弾き返す 隕石も★も破壊
         if (Input.GetButtonDown("Fire1"))
         {
             CheckForward();
-            Push();
+            BreakTarget();
         }
 
-        //右クリックで破壊
+        //右クリックで星を飛ばす
         if (Input.GetButtonDown("Fire2"))
         {
+
+
             CheckForward();
-            BreakTarget();
+            Push();
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -108,7 +110,7 @@ public class PrayerController : MonoBehaviour
         foreach (var item in m_colliders)
         {
             //もし隕石だったら撃ち返して数秒後に壊す
-            if (item.tag == "Comet")
+            if (item.tag == "Comet" || item.tag == "Star")
             {
                 Rigidbody2D rb2d = item.GetComponent<Rigidbody2D>();
                 rb2d.AddForce(forceDir, ForceMode2D.Impulse);

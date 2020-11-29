@@ -50,6 +50,38 @@ public class LoadSceneManagerM : MonoBehaviour
     }
 
     /// <summary>
+    /// クリア１に遷移
+    /// </summary>
+    public void LoadClearScene1()
+    {
+        SceneManager.LoadScene("ClearScene1");
+    }
+
+    /// <summary>
+    /// クリア2に遷移
+    /// </summary>
+    public void LoadClearScene2()
+    {
+        SceneManager.LoadScene("ClearScene2");
+    }
+
+    /// <summary>
+    /// クリア3に遷移
+    /// </summary>
+    public void LoadClearScene3()
+    {
+        SceneManager.LoadScene("ClearScene3");
+    }
+
+    /// <summary>
+    /// クリア4に遷移
+    /// </summary>
+    public void LoadClearScene4()
+    {
+        SceneManager.LoadScene("ClearScene4");
+    }
+
+    /// <summary>
     /// リザルトシーンへ遷移
     /// </summary>
     public void LoadResultScene()

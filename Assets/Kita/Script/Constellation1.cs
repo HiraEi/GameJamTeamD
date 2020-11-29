@@ -9,19 +9,21 @@ public class Constellation1 : MonoBehaviour
 
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Flg();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Flg();
+            starIndex++;
+        }
+        
     }
 
     public void Flg()
     {
-        Debug.Log("hit");
         // 出現する星のプレハブを配列から取得する
         StarPrefabs[starIndex].SetActive(false);
     }

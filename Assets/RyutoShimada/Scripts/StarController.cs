@@ -40,6 +40,7 @@ public class StarController : MonoBehaviour
 
     /*private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Hit");
         //Playerに跳ね返されるとAddforceを止める
         if (collision.tag == "Player")
         {

@@ -11,10 +11,42 @@ public class CometController : MonoBehaviour
     public bool m_isDead = false;
     float m_timer;
 
-    /* public void BreakThis()
-     {
+    //りゅうとのやつ
+    /// <summary>落下速度</summary>
+    [SerializeField] public float m_speed = 5f;
+    public float m_maxSpeed = 0f;
+    /// <summary>落下速度をランダムにするかどうか</summary>
+    [SerializeField] bool m_randomSpeed = false;
+    /// <summary>ランダムの最低値</summary>
+    [SerializeField] float m_rangeMin = 1f;
+    /// <summary>ランダムの最高値</summary>
+    [SerializeField] float m_rangeMax = 3f;
 
-     }*/
+    Rigidbody2D m_rb;
+    bool m_flag = false;
+
+    void Start()
+    {
+        m_maxSpeed = m_speed;
+        m_rb = this.gameObject.GetComponent<Rigidbody2D>();
+    }
+
+
+    void Update()
+    {
+        if (m_flag) return; //フラグが立っているなら返す
+
+        if (m_randomSpeed) //ランダムON
+        {
+            m_rb.AddForce(Vector2.down * Random.Range(m_rangeMin, m_rangeMax), ForceMode2D.Force);
+        }
+        else
+        {
+            m_rb.AddForce(Vector2.down * m_speed, ForceMode2D.Force);
+        }
+    }
+
+    //りゅうとのやつ終わり
 
     public IEnumerator BreakThis()
     {

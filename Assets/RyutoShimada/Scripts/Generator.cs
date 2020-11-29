@@ -14,7 +14,7 @@ public class Generator : MonoBehaviour
     [SerializeField] int m_starCount = 5;
     /// <summary>隕石の生成数</summary>
     [SerializeField] int m_meteoInstans = 1;
-    /// <summary>隕石の生成数</summary>
+    /// <summary>星の生成数</summary>
     [SerializeField] int m_starInstans = 1;
     /// <summary>隕石のオブジェクト</summary>
     [SerializeField] Transform m_meteo = default;
@@ -51,6 +51,9 @@ public class Generator : MonoBehaviour
         //すぐに生成される
         m_meteoTime = m_meteoInterval;
         m_starTime = m_starInterval;
+
+        //check
+        //if () { }
 
         //最初に決められた個数を生成
         for (int i = 0; i < m_meteoInstans; i++) //meteo生成

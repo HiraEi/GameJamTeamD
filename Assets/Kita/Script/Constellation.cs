@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Constellation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	float fallSpeed;
+	float rotSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	void Start()
+	{
+		this.fallSpeed = 0.01f + 0.1f * Random.value;
+		this.rotSpeed = 5f + 3f * Random.value;
+	}
+
+	void Update()
+	{
+		transform.Translate(0, -fallSpeed, 0, Space.World);
+		transform.Rotate(0, 0, rotSpeed);
+
+		if (transform.position.y < -5.5f)
+		{
+			Destroy(gameObject);
+		}
+	}
 }

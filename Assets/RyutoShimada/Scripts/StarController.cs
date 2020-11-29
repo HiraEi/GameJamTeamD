@@ -13,10 +13,8 @@ public class StarController : MonoBehaviour
     [SerializeField] float m_rangeMin = 1f;
     /// <summary>ランダムの最高値</summary>
     [SerializeField] float m_rangeMax = 3f;
-    
 
     Rigidbody2D m_rb;
-
     bool m_flag = false;
 
     // Start is called before the first frame update
@@ -40,7 +38,7 @@ public class StarController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit");
         //Playerに跳ね返されるとAddforceを止める
@@ -54,5 +52,5 @@ public class StarController : MonoBehaviour
             m_flag = false;
             this.gameObject.SetActive(false);
         }
-    }
+    }*/
 }

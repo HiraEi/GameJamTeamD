@@ -52,6 +52,9 @@ public class Generator : MonoBehaviour
         m_meteoTime = m_meteoInterval;
         m_starTime = m_starInterval;
 
+        //check
+        //if () { }
+
         //最初に決められた個数を生成
         for (int i = 0; i < m_meteoInstans; i++) //meteo生成
         {

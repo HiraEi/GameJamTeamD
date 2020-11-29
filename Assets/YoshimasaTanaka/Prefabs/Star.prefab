@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2160898547692378187}
   - component: {fileID: 2160898547692378184}
   - component: {fileID: 2160898547692378185}
+  - component: {fileID: -1660233812755972231}
   m_Layer: 8
   m_Name: Star
   m_TagString: Star
@@ -133,3 +134,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-1660233812755972231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160898547692378196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2032b0bed55829648997e1032ef556ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_explosionPrefab: {fileID: 4562643423815953217, guid: 05e4d500fb3b98249bd915292ada4031,
+    type: 3}
+  m_lifeTime: 0.2
+  m_isDead: 0

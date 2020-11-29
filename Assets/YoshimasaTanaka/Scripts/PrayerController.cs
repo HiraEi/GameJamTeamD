@@ -24,11 +24,13 @@ public class PrayerController : MonoBehaviour
     Collider2D[] m_colliders;
     bool m_isSomeThing;
     Rigidbody2D m_rb;
+    Animator m_anim;
     // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_as = GetComponent<AudioSource>();
+        m_anim = GetComponent<Animator>();
         m_psc = PlayerSkillCounter.FindObjectOfType<PlayerSkillCounter>();
     }
 
@@ -39,22 +41,36 @@ public class PrayerController : MonoBehaviour
         m_rb.velocity = h * Vector2.right * m_speed;
         Debug.Log(m_playerSkillCount);
 
+        //移動するときにアニメーションをする
+        Vector2 scale = this.transform.localScale;
+        if (m_rb.velocity.x > 1)/*右に移動している*/
+        {
+            scale.x = 1;
+            m_anim.Play("MoveAnimationRight");
+        }
+        else if (m_rb.velocity.x < -1)
+        {
+            scale.x = -1;
+            m_anim.Play("MoveAnimationLeft");
+        }
+
         //左クリックで弾き返す 隕石も★も破壊
         if (Input.GetButtonDown("Fire1"))
         {
             CheckForward();
+            m_anim.Play("WeaponAnim");
             BreakTarget();
         }
 
         //右クリックで星を飛ばす
         if (Input.GetButtonDown("Fire2"))
         {
-
-
             CheckForward();
+            m_anim.Play("MagicAnim");
             Push();
         }
 
+        //仮のスキルを表示させるやつ
         if (Input.GetButtonDown("Jump"))
         {
             m_playerSkillCount++;
@@ -79,6 +95,9 @@ public class PrayerController : MonoBehaviour
         Debug.DrawLine(start + Vector2.right * m_radius, start + Vector2.left * m_radius);
     }
 
+    /// <summary>
+    /// CheckForwardの範囲内にあるオブジェクトをtagで識別して上方向に飛ばす。
+    /// </summary>
     void Push()
     {
         Vector2 forceDir = new Vector2(Random.Range(m_minForRandom, m_maxForRandom), 1f * m_pushPower);
@@ -104,23 +123,34 @@ public class PrayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// CheckForwardの範囲内にあるオブジェクトをtagで識別して壊す。CometControllerを全ての星につけておく
+    /// </summary>
     void BreakTarget()
     {
         Vector2 forceDir = new Vector2(Random.Range(m_minForRandom, m_maxForRandom), 1f * m_pushPower);
         foreach (var item in m_colliders)
         {
             //もし隕石だったら撃ち返して数秒後に壊す
-            if (item.tag == "Comet" || item.tag == "Star")
+            if (item.tag == "Meteo" || item.tag == "Star")
             {
                 Rigidbody2D rb2d = item.GetComponent<Rigidbody2D>();
                 rb2d.AddForce(forceDir, ForceMode2D.Impulse);
-                Destroy(item.gameObject, 0.2f);
 
+                CometController cc = item.gameObject.GetComponent<CometController>();
+                cc.m_isDead = true;
+                cc.StartCoroutine("BreakThis");
             }
         }
 
     }
 
+    /// <summary>
+    /// originalObjに最も近いオブジェクトを判別する
+    /// </summary>
+    /// <param name="originalObj">このオブジェクトをもとにして判定する</param>
+    /// <param name="tagName">このタグがついたオブジェクトを判定する</param>
+    /// <returns></returns>
     GameObject FilterTarget(GameObject originalObj, string tagName)
     {
         float tmpDis = 0;//一時保存　距離

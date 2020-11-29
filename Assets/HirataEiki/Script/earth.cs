@@ -6,6 +6,8 @@ public class earth : MonoBehaviour
 {
     [SerializeField] int m_earthHp = 50;
     [SerializeField] int m_cometDamage = 10;
+
+    //githubtest
     
     void Start()
     {

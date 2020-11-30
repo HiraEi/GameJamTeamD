@@ -284,6 +284,11 @@ PrefabInstance:
       propertyPath: m_earthHp
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7732346507969016876, guid: 8147e30c3ca586048a1b818efab5311c,
+        type: 3}
+      propertyPath: m_backGround
+      value: 
+      objectReference: {fileID: 1572703094}
     - target: {fileID: 7732346507969016878, guid: 8147e30c3ca586048a1b818efab5311c,
         type: 3}
       propertyPath: m_Sprite
@@ -1754,6 +1759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1572703096}
   - component: {fileID: 1572703095}
+  - component: {fileID: 1572703097}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -1792,6 +1798,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1572703097
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572703094}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96cde92b34fa71b4e896f810a431a6ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1765635862
 GameObject:
   m_ObjectHideFlags: 0

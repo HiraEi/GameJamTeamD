@@ -17,7 +17,5 @@ public class PlayerControllerHirata : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb2d.velocity = h * Vector2.right * m_speed;
-
-        //if()
     }
 }

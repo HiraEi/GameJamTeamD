@@ -288,11 +288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -721,12 +721,12 @@ PrefabInstance:
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 18.8
+      value: 18.800003
       objectReference: {fileID: 0}
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -442
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
@@ -746,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.75600004
+      value: 0.1555946
       objectReference: {fileID: 0}
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.75600004
+      value: 0.1555946
       objectReference: {fileID: 0}
     - target: {fileID: 3101008332976668248, guid: d12d39a295ab4df44bb6312691c48ecc,
         type: 3}
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83a3ff06fbdc954293bd4b41094e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioClip: {fileID: 8300000, guid: 7db687966fecab54e86e4dd0f60f6bb8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44b15745374684a47b7c659cfe49d44b, type: 3}
   m_waitTime: 1
 --- !u!1001 &4033233019452732558
 PrefabInstance:
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83a3ff06fbdc954293bd4b41094e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioClip: {fileID: 8300000, guid: 7db687966fecab54e86e4dd0f60f6bb8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44b15745374684a47b7c659cfe49d44b, type: 3}
   m_waitTime: 1
 --- !u!224 &4304956428051967179 stripped
 RectTransform:
@@ -1044,7 +1044,7 @@ PrefabInstance:
     - target: {fileID: 5827282614033495875, guid: 855aeb03616b29443826d8c8ebd0d646,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -147
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5827282614033495875, guid: 855aeb03616b29443826d8c8ebd0d646,
         type: 3}
@@ -1064,7 +1064,7 @@ PrefabInstance:
     - target: {fileID: 5827282614033495875, guid: 855aeb03616b29443826d8c8ebd0d646,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.75600004
+      value: 0.56278384
       objectReference: {fileID: 0}
     - target: {fileID: 5827282614033495875, guid: 855aeb03616b29443826d8c8ebd0d646,
         type: 3}
@@ -1074,7 +1074,7 @@ PrefabInstance:
     - target: {fileID: 5827282614033495875, guid: 855aeb03616b29443826d8c8ebd0d646,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.75600004
+      value: 0.56278384
       objectReference: {fileID: 0}
     - target: {fileID: 5827282614033495875, guid: 855aeb03616b29443826d8c8ebd0d646,
         type: 3}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83a3ff06fbdc954293bd4b41094e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioClip: {fileID: 8300000, guid: 7db687966fecab54e86e4dd0f60f6bb8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44b15745374684a47b7c659cfe49d44b, type: 3}
   m_waitTime: 1
 --- !u!1001 &8785742789684068835
 PrefabInstance:
@@ -1189,7 +1189,7 @@ PrefabInstance:
     - target: {fileID: 1155996809212304841, guid: 852b0ec3aba3f2a47905a86a4cd7417a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -307
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1155996809212304841, guid: 852b0ec3aba3f2a47905a86a4cd7417a,
         type: 3}
@@ -1209,7 +1209,7 @@ PrefabInstance:
     - target: {fileID: 1155996809212304841, guid: 852b0ec3aba3f2a47905a86a4cd7417a,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.75600004
+      value: 0.33656764
       objectReference: {fileID: 0}
     - target: {fileID: 1155996809212304841, guid: 852b0ec3aba3f2a47905a86a4cd7417a,
         type: 3}
@@ -1219,7 +1219,7 @@ PrefabInstance:
     - target: {fileID: 1155996809212304841, guid: 852b0ec3aba3f2a47905a86a4cd7417a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.75600004
+      value: 0.33656764
       objectReference: {fileID: 0}
     - target: {fileID: 1155996809212304841, guid: 852b0ec3aba3f2a47905a86a4cd7417a,
         type: 3}
@@ -1267,5 +1267,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83a3ff06fbdc954293bd4b41094e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioClip: {fileID: 8300000, guid: 7db687966fecab54e86e4dd0f60f6bb8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44b15745374684a47b7c659cfe49d44b, type: 3}
   m_waitTime: 1

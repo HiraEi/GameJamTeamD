@@ -38,7 +38,7 @@ public class StarController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit");
         //Playerに跳ね返されるとAddforceを止める
@@ -52,10 +52,5 @@ public class StarController : MonoBehaviour
             m_flag = false;
             this.gameObject.SetActive(false);
         }
-
-        if (collision.tag == "aaa")
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
+    }*/
 }

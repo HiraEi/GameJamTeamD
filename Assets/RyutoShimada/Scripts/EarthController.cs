@@ -9,13 +9,18 @@ public class EarthController : MonoBehaviour
     [SerializeField] int m_meteoDamage = 10;
     [SerializeField] int m_starDamage = 20;
 
+    [SerializeField] GameObject m_backGround = default;
+
     [SerializeField] GameObject loadSceneObject = default;
     LoadSceneManagerM loadSceneManager;
+
+    Animator m_anim;
 
     // Start is called before the first frame update
     void Start()
     {
         loadSceneManager = loadSceneObject.GetComponent<LoadSceneManagerM>();
+        m_anim = m_backGround.GetComponent<Animator>();
     }
 
 
@@ -33,12 +38,14 @@ public class EarthController : MonoBehaviour
         if (collision.tag == "Meteo")
         {
             m_earthHp -= m_meteoDamage;
-            Debug.Log("EarthHP" + m_earthHp);
+            m_anim.Play("Damage");
+            //Debug.Log("EarthHP" + m_earthHp);
         }
         else if (collision.tag == "Star")
         {
             m_earthHp -= m_starDamage;
-            Debug.Log("EarthHP" + m_earthHp);
+            m_anim.Play("Damage");
+            //Debug.Log("EarthHP" + m_earthHp);
         }
     }
 }

@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-
+  - Star
+  - TheEarth
+  - Meteo
+  - aaa
+  - MagicAttakcPoint
   layers:
   - Default
   - TransparentFX
@@ -14,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - Star
+  - 
   - 
   - 
   - 

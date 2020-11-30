@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneButton : MonoBehaviour
 {
     AudioSource m_audio;
-    [SerializeField] AudioClip m_audioClip = null;
+    [SerializeField] AudioClip m_audioClip = default;
     [SerializeField] float m_waitTime = 1f;
 
     private void Start()
@@ -26,7 +26,7 @@ public class SceneButton : MonoBehaviour
     //コルーチン
     IEnumerator WaitForLoadSccene()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("ExplanationScene");
     }
@@ -41,7 +41,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadSccene1()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.Play();
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("GameScene");
     }
@@ -56,7 +56,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadSccene2()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("GameSceneStage2");
     }
@@ -71,7 +71,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadSccene3()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("GameSceneStage3");
     }
@@ -86,7 +86,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadSccene4()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("GameSceneStage4");
     }
@@ -101,7 +101,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadScceneResult()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("ResultScene");
     }
@@ -116,7 +116,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadScceneStageSelect()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("StageSelectScene");
     }
@@ -131,7 +131,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadScceneGameOver()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("GameOverScene");
     }
@@ -146,7 +146,7 @@ public class SceneButton : MonoBehaviour
 
     IEnumerator WaitForLoadScceneTittleScene()
     {
-        m_audio.PlayOneShot(m_audioClip);
+        //m_audio.PlayOneShot(m_audioClip);
         yield return new WaitForSeconds(m_waitTime);
         SceneManager.LoadScene("TitleScene");
     }

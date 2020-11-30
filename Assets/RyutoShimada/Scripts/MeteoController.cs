@@ -16,6 +16,8 @@ public class MeteoController : MonoBehaviour
 
     Rigidbody2D m_rb;
 
+    [SerializeField] GameObject m_meteoBreak = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,14 @@ public class MeteoController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "TheEarth")
         {
             this.gameObject.SetActive(false);
+            Instantiate(m_meteoBreak, this.transform.position, this.transform.rotation);
+            yield return new WaitForSeconds(1f);
+            Destroy(m_meteoBreak.gameObject);
         }
     }
 }

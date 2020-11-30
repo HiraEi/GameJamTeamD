@@ -15,7 +15,8 @@ public class StarController : MonoBehaviour
     [SerializeField] float m_rangeMax = 3f;
 
     Rigidbody2D m_rb;
-    bool m_flag = false;
+
+    [SerializeField] GameObject m_starBreak = default;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +27,6 @@ public class StarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_flag) return; //フラグが立っているなら返す
-
         if (m_randomSpeed) //ランダムON
         {
             m_rb.AddForce(Vector2.down * Random.Range(m_rangeMin, m_rangeMax), ForceMode2D.Force);
@@ -38,19 +37,20 @@ public class StarController : MonoBehaviour
         }
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit");
-        //Playerに跳ね返されるとAddforceを止める
-        if (collision.tag == "Player")
-        {
-            m_flag = true;
-        }
+        //Debug.Log("Hit");
 
         if (collision.tag == "TheEarth")
         {
-            m_flag = false;
+            this.gameObject.SetActive(false);
+            Instantiate(m_starBreak, this.transform.position, this.transform.rotation);
+        }
+
+        //星を打ち返した時に設置判定に触れたら
+        if (collision.tag == "aaa")
+        {
             this.gameObject.SetActive(false);
         }
-    }*/
+    }
 }
